@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Logo from '../../assets/leadbot.png'
-import LoginBg from '../../assets/auth/sign-in.png'
+import LoginBg from '../../assets/auth/illustration.png'
 import { Link, useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
@@ -22,22 +22,22 @@ const LoginPage = () => {
 
   return (
 
-    <div className='w-screen h-screen flex justify-around items-center md:flex-row flex-col'>
+    <div className='w-screen flex justify-between items-center md:flex-row flex-col h-[100vh]'>
 
       {/* LOGO  */}
-      <Link to={"/"} className='flex items-center gap-x-5 md:fixed top-2 left-3 w-[100%] px-3'>
+      <Link to={"/"} className='flex items-center gap-x-5 md:fixed top-0 left-0 py-2 px-3 w-[100%] '>
         <img src={Logo} className='' />
         <p className='text-lg'>Dial Smart</p>
       </Link>
 
 
       {/* IMAGE  */}
-      <div className='sm:block hidden'>
-        <img src={LoginBg} alt="" className='' />
+      <div className='hidden  bg-[#F8F5FF] h-[100vh] sm:flex justify-center items-center'>
+        <img src={LoginBg} alt="" className='h-[30rem] bg-contain' />
       </div>
 
       {/* RIGHT FORM  */}
-      <div className='my-5 mx-10'>
+      <div className='my-5 mx-10 flex-1 flex justify-center items-start flex-col '>
 
         <p className='text-4xl font-semibold'>Login</p>
         <p className='mt-2 text-sm'> <span className='text-[#EA580C] mr-1'>Welome back! </span>sign in with your email and password</p>

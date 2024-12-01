@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Logo from '../../assets/leadbot.png'
-import RegisterBg from '../../assets/auth/sign-up.png'
+import RegisterBg from '../../assets/auth/illustration.png'
 import { Link, useNavigate } from 'react-router-dom'
 
 const RegisterPage = () => {
@@ -17,7 +17,7 @@ const RegisterPage = () => {
   }
 
   return (
-    <div className='w-screen h-screen flex justify-around items-center md:flex-row flex-col'>
+    <div className='w-screen h-screen flex justify-between items-center md:flex-row flex-col'>
 
       {/* LOGO  */}
       <Link to={"/"} className='flex items-center gap-x-5 md:fixed top-2 left-3 w-[100%] px-3'>
@@ -27,12 +27,12 @@ const RegisterPage = () => {
 
 
       {/* IMAGE  */}
-      <div className='sm:block hidden'>
-        <img src={RegisterBg} alt=""/>
+      <div className='hidden  bg-[#F8F5FF] h-[100vh] sm:flex justify-center items-center'>
+        <img src={RegisterBg} alt="" className='h-[30rem] bg-contain' />
       </div>
 
       {/* RIGHT FORM  */}
-      <div className=''>
+      <div className='my-5 mx-10 flex-1 flex justify-center items-start flex-col'>
 
         <p className='text-4xl font-semibold'>Register</p>
         <p className='mt-2 text-sm'> <span className='text-[#EA580C] mr-1'>Let's create! </span>and account to use Dial Smart</p>

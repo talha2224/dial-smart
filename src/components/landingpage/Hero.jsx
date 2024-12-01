@@ -1,5 +1,5 @@
 import React from 'react'
-import HeroImage from '../../assets/landing/hero.svg'
+import HeroImage from '../../assets/landing/hero.png'
 import { Link } from 'react-router-dom'
 
 const Hero = () => {
@@ -15,7 +15,7 @@ const Hero = () => {
       </div>
 
 
-      <div className='lg:mt-0 mt-10 lg:block flex justify-center items-center'>
+      <div className='lg:mt-0 mt-10 flex justify-center items-center lg:justify-end lg:items-end'>
         <img src={HeroImage} loading="lazy" alt="" className='lg:min-h-[30rem] lg:min-w-[30rem] h-[20rem]' />
       </div>
 
