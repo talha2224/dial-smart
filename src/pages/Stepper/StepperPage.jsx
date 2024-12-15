@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Step, Stepper } from 'react-form-stepper';
 import Logo from '../../assets/leadbot.png'
 import { Link } from 'react-router-dom'
+import axios from 'axios';
+import config from '../../config';
 
 const StepperPage = () => {
 
     const [activeStep, setActiveStep] = useState(0);
+    const [username, setUsername] = useState("")
     const [companyDeatils, setCompanyDeatils] = useState({name: "",location: "",objective: "",description: "",goals: "",challenges: "",aiAssistance: "",toneStyle: "",language:"" });
-    
     const inputStyle = 'w-[100%] h-[2.2rem] border border-[#DCDADB] bg-transparent text-black outline-none block rounded-md px-3 mt-2'
     const textAreaStyle = 'w-[100%] h-[15rem] border border-[#DCDADB] bg-transparent text-black outline-none block rounded-md p-3 mt-2'
 
@@ -23,6 +25,19 @@ const StepperPage = () => {
 
     }
 
+    useEffect(()=>{
+        const fetchUserAccount = async()=>{
+            try {
+                let res = await axios.get(`${config.baseUrl}/account/single/${localStorage.getItem("accountId")}`) 
+                setUsername(res.data.data?.username)
+            } 
+            catch (error) {
+                console.log(error)
+            }
+        }
+        fetchUserAccount()
+    },[])
+
     return (
         <div className='px-4 sm:px-12 py-7 w-screen h-screen'>
 
@@ -35,7 +50,7 @@ const StepperPage = () => {
 
                 <div className='shadow-navShadow rounded-md p-5'>
 
-                    <h1 className="text-[1.1rem] font-medium">Hi Annie 👋, Welcome to Dial Smart!</h1>
+                    <h1 className="text-[1.1rem] font-medium">Hi {username} 👋, Welcome to Dial Smart!</h1>
                     <h1 className="text-[1.1rem] font-medium">We need some basic information to get started.</h1>
                     <Stepper activeStep={activeStep} className='sm:w-[32rem]' styleConfig={{ activeBgColor: 'red', activeTextColor: '#fff', completedBgColor: '#008000', completedTextColor: '#fff', inactiveBgColor: '#E0E0E0', inactiveTextColor: '#757575', size: '2em', }} connectorStyleConfig={{ activeColor: '#008000', completedColor: '#8BC34A', disabledColor: '#E0E0E0', size: 2, }}>
                         <Step label="Business Details" />

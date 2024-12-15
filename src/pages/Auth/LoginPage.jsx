@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import Logo from '../../assets/leadbot.png'
 import LoginBg from '../../assets/auth/illustration.png'
 import { Link, useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
+import axios from 'axios'
+import config from '../../config'
+let inputStyle = "px-3 min-w-[22rem] max-w-[22rem] h-[3rem] border border-[#DCDADB] bg-transparent outline-none block rounded-md"
 
 const LoginPage = () => {
 
-  let inputStyle = "px-3 min-w-[22rem] max-w-[22rem] h-[3rem] border border-[#DCDADB] bg-transparent text-white outline-none block rounded-md"
   const [credentials, setCredentials] = useState({ email: "", password: "" })
   const nav = useNavigate()
 
@@ -15,8 +18,30 @@ const LoginPage = () => {
 
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    nav("/dashboard/home")
+    e.preventDefault()
+    let loader = toast.loading("Processing Request....")
+    try {
+      if (credentials.email.length === 0 || credentials.password.length === 0) {
+        toast.error("All Fields Are Required")
+        toast.dismiss(loader)
+      }
+      else {
+        let res = await axios.post(`${config.baseUrl}/account/login`, credentials)
+        if (res.status == 200) {
+          toast.dismiss(loader)
+          toast.success(res?.data?.msg)
+          localStorage.setItem("roleId", res?.data?.info?.roleId)
+          localStorage.setItem("accountId", res?.data?.info?.id)
+          localStorage.setItem("token", res?.data?.data?.token)
+          nav("/dashboard/home")
+        }
+      }
+    }
+
+    catch (error) {
+      toast.error(error.response?.data?.msg)
+      toast.dismiss(loader)
+    }
   }
 
 

@@ -13,34 +13,39 @@ import User from './pages/Dashboard/User'
 import VoiceLibrary from './pages/Dashboard/VoiceLibrary'
 import Schedule from './pages/Dashboard/Schedule'
 import Calendar from './pages/Dashboard/Calendar'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
 
 
   return (
-    <BrowserRouter>
-      <Routes>
 
-        <Route path='/' element={<LandingPage />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/register' element={<RegisterPage />} />
-        <Route path='/company/info' element={<StepperPage />} />
+    <>
+      <Toaster />
+      <BrowserRouter>
+        <Routes>
 
-        <Route path='/dashboard/' element={<Layout />}>
-          <Route path='home' element={<Home />} />
-          <Route path='contacts' element={<Contacts />} />
-          <Route path='companies' element={<Companies />} />
-          <Route path='calls' element={<CallLogs />} />
-          <Route path='users' element={<User />} />
-          <Route path='voices' element={<VoiceLibrary />} />
-          <Route path='schedule' element={<Schedule />} />
-          <Route path='calendar' element={<Calendar />} />
-          
-        </Route>
+          <Route path='/' element={<LandingPage />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/register' element={<RegisterPage />} />
+          <Route path='/company/info' element={<StepperPage />} />
 
-      </Routes>
+          <Route path='/dashboard/' element={<Layout />}>
+            <Route path='home' element={<Home />} />
+            <Route path='contacts' element={<Contacts />} />
+            <Route path='companies' element={<Companies />} />
+            <Route path='calls' element={<CallLogs />} />
+            <Route path='users' element={<User />} />
+            <Route path='voices' element={<VoiceLibrary />} />
+            <Route path='schedule' element={<Schedule />} />
+            <Route path='calendar' element={<Calendar />} />
 
-    </BrowserRouter>
+          </Route>
+
+        </Routes>
+
+      </BrowserRouter>
+    </>
   )
 }
 

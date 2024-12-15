@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import Logo from '../../assets/leadbot.png'
 import RegisterBg from '../../assets/auth/illustration.png'
 import { Link, useNavigate } from 'react-router-dom'
+import config from '../../config'
+import toast from 'react-hot-toast'
+import axios from 'axios'
 
 const RegisterPage = () => {
-  let inputStyle = "px-3 min-w-[22rem] max-w-[22rem] h-[3rem] border border-[#DCDADB] bg-transparent text-white outline-none block rounded-md"
-  const [credentials, setCredentials] = useState({ name: "", email: "", password: "" })
+  let inputStyle = "px-3 min-w-[22rem] max-w-[22rem] h-[3rem] border border-[#DCDADB] bg-transparent outline-none block rounded-md text-black"
+  const [credentials, setCredentials] = useState({ username: "", email: "", password: "" })
   const nav = useNavigate()
 
   const onChangeInput = (e) => {
@@ -14,6 +17,30 @@ const RegisterPage = () => {
 
 
   const handleSubmit = async (e) => {
+    e.preventDefault()
+    let loader = toast.loading("Processing Request....")
+    try {
+      if (credentials.email.length === 0 || credentials.username.length === 0 || credentials.password.length === 0) {
+        toast.error("All Fields Are Required")
+        toast.dismiss(loader)
+      }
+      else {
+        let res = await axios.post(`${config.baseUrl}/account/register`, credentials)
+        if (res.status == 200) {
+          toast.dismiss(loader)
+          toast.success(res?.data?.msg)
+          await localStorage.setItem("roleId",res?.data?.data?.info?.id)
+          await localStorage.setItem("accountId",res?.data?.data?.info?.id)
+          await localStorage.setItem("token",res?.data?.data?.token)
+          nav("/company/info")
+        }
+      }
+    }
+
+    catch (error) {
+      toast.error(error.response?.data?.msg)
+      toast.dismiss(loader)
+    }
   }
 
   return (
@@ -41,7 +68,7 @@ const RegisterPage = () => {
 
 
           <p className='mt-6 mb-3'>Username</p>
-          <input onChange={(e) => onChangeInput(e)} type="text" name="name" placeholder='mark henry' required={true} className={inputStyle} />
+          <input onChange={(e) => onChangeInput(e)} type="text" name="username" placeholder='mark henry' required={true} className={inputStyle} />
 
           <p className='mt-6 mb-3'>Email Address</p>
           <input onChange={(e) => onChangeInput(e)} type="email" name="email" placeholder='user@mail.com' required={true} className={inputStyle} />
