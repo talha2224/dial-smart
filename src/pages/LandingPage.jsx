@@ -15,7 +15,7 @@ const LandingPage = () => {
   return (
     <>
       <div className="px-4 sm:px-12">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div></div>}>
           <Navbar />
           <Hero />
           <Help />

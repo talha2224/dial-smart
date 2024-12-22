@@ -2,11 +2,11 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { Toaster } from 'react-hot-toast';
-
-// Lazy load the pages
 const LandingPage = lazy(() => import('./pages/LandingPage'));
 const PolicyPage = lazy(() => import('./pages/PolicyPage'));
 const Terms = lazy(() => import('./pages/TermsPage'));
+const RefundPolicyPage = lazy(() => import('./pages/RefundPolicyPage'));
+const OwnershipStatementPage = lazy(() => import('./pages/OwnershipStatementPage'));
 const RegisterPage = lazy(() => import('./pages/Auth/RegisterPage'));
 const LoginPage = lazy(() => import('./pages/Auth/LoginPage'));
 const StepperPage = lazy(() => import('./pages/Stepper/StepperPage'));
@@ -31,6 +31,8 @@ function App() {
             <Route path='/' element={<LandingPage />} />
             <Route path='/privacy' element={<PolicyPage />} />
             <Route path='/terms' element={<Terms />} />
+            <Route path='/refund' element={<RefundPolicyPage />} />
+            <Route path='/ownership' element={<OwnershipStatementPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/user/account/inviation/:token' element={<InvitationPage />} />
