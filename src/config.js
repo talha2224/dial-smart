@@ -5,9 +5,9 @@ const devConfig = {
     socketUrl:"http://localhost:3900"
 }
 const productionConfig = {
-    baseUrl:"http://localhost:3900/api/v1",
-    socketUrl:"http://localhost:3900"
+    baseUrl:"https://sea-lion-app-54dwv.ondigitalocean.app/api/v1",
+    socketUrl:"https://sea-lion-app-54dwv.ondigitalocean.app/"
 }
 
 
-export default devConfig
+export default productionConfig
