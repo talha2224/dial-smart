@@ -22,7 +22,12 @@ export const navData = [
         name: "Companies",
         icon: <FaBuilding />
     },
-
+    {
+        id: 7,
+        link: "users",
+        name: "Users",
+        icon: <FaUser />
+    },
     {
         id: 21,
         link: "calls",
@@ -34,12 +39,6 @@ export const navData = [
         link: "voices",
         name: "Voice Library",
         icon: <PiUserSoundFill />
-    },
-    {
-        id: 7,
-        link: "users",
-        name: "Users",
-        icon: <FaUser />
     },
     {
         id: 5,

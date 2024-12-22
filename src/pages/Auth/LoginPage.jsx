@@ -30,8 +30,8 @@ const LoginPage = () => {
         if (res.status == 200) {
           toast.dismiss(loader)
           toast.success(res?.data?.msg)
-          localStorage.setItem("roleId", res?.data?.info?.roleId)
-          localStorage.setItem("accountId", res?.data?.info?.id)
+          localStorage.setItem("roleId", res?.data?.data?.info?.roleId)
+          localStorage.setItem("accountId", res?.data?.data?.info?.id)
           localStorage.setItem("token", res?.data?.data?.token)
           nav("/dashboard/home")
         }
@@ -50,9 +50,9 @@ const LoginPage = () => {
     <div className='w-screen flex justify-between items-center md:flex-row flex-col h-[100vh]'>
 
       {/* LOGO  */}
-      <Link to={"/"} className='flex items-center gap-x-5 md:fixed top-0 left-0 py-2 px-3 w-[100%] '>
-        <img src={Logo} className='' />
-        <p className='text-lg'>Dial Smart</p>
+      <Link to={"/"} className='flex items-center gap-x-5 md:fixed top-2 left-3 w-[100%] px-3'>
+        <img src={Logo} alt="leadbot-logo" className='h-[2rem]' />
+        <p className='text-lg'>Lead Dial</p>
       </Link>
 
 

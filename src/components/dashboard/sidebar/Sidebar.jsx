@@ -6,6 +6,7 @@ import { navData } from '../../../constants/sidebarData';
 import { Link, useLocation } from 'react-router-dom';
 import { IoLogOut } from 'react-icons/io5';
 import { useSidebar } from '../../../context/SidebarContext';
+import { handleLogout } from '../../../helpers/function';
 
 const Sidebar = () => {
   const location = useLocation().pathname.split("/")[2];
@@ -14,28 +15,25 @@ const Sidebar = () => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-        toggleNav(); // Close sidebar if clicked outside
+        toggleNav();
       }
     };
-
-    // Attach event listener on mount
     document.addEventListener('mousedown', handleClickOutside);
-
-    // Cleanup event listener on unmount
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [toggleNav]);
 
+
   return (
     <>
       {/* Desktop Sidebar */}
       <div className={`lg:block hidden w-[15rem] h-[100vh] bg-[#0F0F0F] p-5 relative`}>
-        <div className='flex items-center gap-x-2'>
-          <img src={Logo} alt="leadbot-logo" />
-          <h2 className='text-xl font-semibold text-white'>Dial Smart</h2>
-        </div>
 
+        <div className='flex items-center gap-x-2'>
+          <img src={Logo} alt="leadbot-logo" className='h-[2rem] mr-2' />
+          <h2 className='text-xl font-semibold text-white'>Lead Dial</h2>
+        </div>
         <p className='text-[#a6b0cf] mt-[2rem] mb-4 text-xs'>MENU</p>
 
         <div className='h-[40vh] overflow-y-auto sidebar'>
@@ -62,7 +60,7 @@ const Sidebar = () => {
               <p className='text-xs text-[#a6b0cf]'>Free account</p>
             </div>
           </div>
-          <IoLogOut className='text-[#fff] cursor-pointer text-xl' />
+          <IoLogOut onClick={handleLogout} className='text-[#fff] cursor-pointer text-xl' />
         </div>
       </div>
 
@@ -71,8 +69,8 @@ const Sidebar = () => {
         isNavOpen && (
           <div className={`lg:hidden block w-[14rem] z-50 h-[100vh] bg-[#0F0F0F] p-5 fixed top-0 left-0 transition-all duration-300 ease-in-out ${isNavOpen ? 'transform translate-x-0' : 'transform -translate-x-full'}`} ref={sidebarRef}>
             <div className='flex items-center gap-x-2'>
-              <img src={Logo} alt="leadbot-logo" />
-              <h2 className='text-xl font-semibold text-white'>Dial Smart</h2>
+              <img src={Logo} alt="leadbot-logo" className='h-[2rem] mr-2' />
+              <h2 className='text-xl font-semibold text-white'>Lead Dial</h2>
             </div>
 
             <p className='text-[#a6b0cf] mt-[2rem] mb-4 text-xs'>MENU</p>
@@ -101,7 +99,7 @@ const Sidebar = () => {
                   <p className='text-xs text-[#a6b0cf]'>Free account</p>
                 </div>
               </div>
-              <IoLogOut className='text-[#fff] cursor-pointer text-xl' />
+              <IoLogOut onClick={handleLogout} className='text-[#fff] cursor-pointer text-xl' />
             </div>
           </div>
         )}

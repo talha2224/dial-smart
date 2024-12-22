@@ -14,6 +14,7 @@ import VoiceLibrary from './pages/Dashboard/VoiceLibrary'
 import Schedule from './pages/Dashboard/Schedule'
 import Calendar from './pages/Dashboard/Calendar'
 import { Toaster } from 'react-hot-toast'
+import InvitationPage from './pages/Auth/InvitationPage'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path='/' element={<LandingPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
+          <Route path='/user/account/inviation/:token' element={<InvitationPage />} />
           <Route path='/company/info' element={<StepperPage />} />
 
           <Route path='/dashboard/' element={<Layout />}>

@@ -29,10 +29,10 @@ const RegisterPage = () => {
         if (res.status == 200) {
           toast.dismiss(loader)
           toast.success(res?.data?.msg)
-          await localStorage.setItem("roleId",res?.data?.data?.info?.id)
-          await localStorage.setItem("accountId",res?.data?.data?.info?.id)
-          await localStorage.setItem("token",res?.data?.data?.token)
-          nav("/company/info")
+          await localStorage.setItem("roleId", res?.data?.data?.info?.roleId)
+          await localStorage.setItem("accountId", res?.data?.data?.info?.id)
+          await localStorage.setItem("token", res?.data?.data?.token)
+          nav("/dashboard/home")
         }
       }
     }
@@ -48,8 +48,8 @@ const RegisterPage = () => {
 
       {/* LOGO  */}
       <Link to={"/"} className='flex items-center gap-x-5 md:fixed top-2 left-3 w-[100%] px-3'>
-        <img src={Logo} className='' />
-        <p className='text-lg'>Dial Smart</p>
+        <img src={Logo} alt="leadbot-logo" className='h-[2rem]' />
+        <p className='text-lg'>Lead Dial</p>
       </Link>
 
 
@@ -62,7 +62,7 @@ const RegisterPage = () => {
       <div className='my-5 mx-10 flex-1 flex justify-center items-start flex-col'>
 
         <p className='text-4xl font-semibold'>Register</p>
-        <p className='mt-2 text-sm'> <span className='text-[#EA580C] mr-1'>Let's create! </span>and account to use Dial Smart</p>
+        <p className='mt-2 text-sm'> <span className='text-[#EA580C] mr-1'>Let's create! </span>and account to use Lead Dial</p>
         {/* FORM  */}
         <form action="" onSubmit={handleSubmit}>
 

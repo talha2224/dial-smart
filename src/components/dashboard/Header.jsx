@@ -5,43 +5,32 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { useSidebar } from '../../context/SidebarContext';
 import SyncPopup from './popups/SyncPopup';
 import { RxEnterFullScreen } from "react-icons/rx";
+import axios from 'axios';
+import config from '../../config'
+import toast from 'react-hot-toast';
 
 const Header = ({ location }) => {
-
-    const companyData = [
-        {
-            name: "TechCorp",
-            companyDescription: "TechCorp specializes in cutting-edge technology solutions.",
-            createdDate: "01 Jan, 2022",
-            assignedUsers: ["Alice", "Bob", "Charlie"],
-            totalContacts: 3,
-            transcript: "Alice, Bob, Charlie",
-            connectionStatus: 1
-        },
-        {
-            name: "BizInnovate",
-            companyDescription: "BizInnovate empowers businesses with innovation.",
-            createdDate: "15 Feb, 2022",
-            assignedUsers: ["Daniel", "Eve", "Frank", "Grace"],
-            totalContacts: 4,
-            transcript: "Daniel, Eve, Frank, Grace"
-        },
-        {
-            name: "FinTech Solutions",
-            companyDescription: "FinTech Solutions revolutionizes finance with technology.",
-            createdDate: "10 Mar, 2022",
-            assignedUsers: ["Hannah", "Ivan", "Jack"],
-            totalContacts: 3,
-            transcript: "Hannah, Ivan, Jack"
-        },
-    ];
     const { isNavOpen, toggleNav } = useSidebar();
+    const [companyData, setCompanyData] = useState([])
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [listId, setListId] = useState("");
     const [isFullScreen, setIsFullScreen] = useState(false);
-    const [selectedCompany, setSelectedCompany] = useState(companyData[0]);
+    const [selectedCompany, setSelectedCompany] = useState(null);
+    const userId = localStorage.getItem("accountId")
 
 
+    const fetchCompanies = async () => {
+        try {
+            let res = await axios.get(`${config.baseUrl}/companies/user/${userId}`)
+            setCompanyData(res.data?.data)
+            const activeCompany = res.data?.data?.find(company => company.active === 1);
+            if (activeCompany) { setSelectedCompany(activeCompany); }
+            else { toast.error("No active company found"); }
+        }
+        catch (error) {
+            toast.error("Failed to fetch companies")
+        }
+    }
     const enterFullScreen = () => {
         const elem = document.documentElement;
         if (elem.requestFullscreen) { elem.requestFullscreen(); }
@@ -57,12 +46,20 @@ const Header = ({ location }) => {
         else if (document.msExitFullscreen) { document.msExitFullscreen(); }
         setIsFullScreen(false);
     };
-
     const toggleFullScreen = () => {
         if (isFullScreen) { exitFullScreen(); }
         else { enterFullScreen(); }
     };
+    const handleChange = async (event) => {
+        const selected = companyData.find(company => company.name === event.target.value);
+        setSelectedCompany(selected);
+        let res = await axios.put(`${config.baseUrl}/companies/toggle/${userId}/${selected?._id}`)
+        if (res.data) {
+            await fetchCompanies()
+            toast.success(`Now Using ${selected?.name} Company`)
+        }
 
+    };
     useEffect(() => {
         const handleKeyDown = (event) => {
             if (event.key === 'Escape' && isFullScreen) { exitFullScreen(); }
@@ -71,11 +68,9 @@ const Header = ({ location }) => {
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [isFullScreen]);
 
-
-    const handleChange = (event) => {
-        const selected = companyData.find(company => company.name === event.target.value);
-        setSelectedCompany(selected);
-    };
+    useEffect(() => {
+        fetchCompanies()
+    }, [])
 
 
     return (
@@ -83,7 +78,7 @@ const Header = ({ location }) => {
         <div className='w-[100%] flex justify-between items-center p-5 border-b border-[lightgray]'>
 
             <div className='flex items-center gap-x-4'>
-                <GiHamburgerMenu className='lg:hidden block' onClick={() => toggleNav(!isNavOpen)} />
+                <GiHamburgerMenu className='lg:hidden block cursor-pointer' onClick={() => toggleNav(!isNavOpen)} />
                 <p className='text-lg'>{location === "home" ? "Dashboard" : location.charAt(0).toUpperCase() + location.slice(1)}</p>
             </div>
 
@@ -92,8 +87,8 @@ const Header = ({ location }) => {
 
 
                 {/* Dropdown - Company names only */}
-                <select onChange={handleChange} className="bg-[#e5e7ea] p-2 rounded-md outline-none text-sm appearance-none max-w-[6.5rem] truncate cursor-pointer">
-                    {companyData.map((company, index) => (<option key={index} value={company.name}> {company.name}</option>))}
+                <select value={selectedCompany?.name || ""} onChange={handleChange} className="bg-[#e5e7ea] p-2 rounded-md outline-none text-sm appearance-none max-w-[8rem] truncate cursor-pointer">
+                    { companyData.map((company, index) => ( <option key={index} value={company.name}>{company.name}</option>)) }
                 </select>
 
                 <RxEnterFullScreen className='text-[1.3rem] cursor-pointer' onClick={toggleFullScreen} title={isFullScreen ? "Exit Fullscreen" : "Enter Fullscreen"} />

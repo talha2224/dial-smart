@@ -38,7 +38,7 @@ const Work = () => {
 
             <div className='flex justify-center items-center flex-col'>
                 <h1 className='text-[1.3rem] lg:text-[1.6rem] font-semibold'>What We Offer</h1>
-                <p className='text-[#454545] w-[100%] lg:w-[50%] text-start lg:text-center text-sm mt-4'>Dial Smart simplifies your call automation with AI-driven solutions. Effortlessly engage with clients, qualify leads, and follow up—all automatically. Ready to revolutionize the way you connect and close deals?</p>
+                <p className='text-[#454545] w-[100%] lg:w-[50%] text-start lg:text-center text-sm mt-4'>Lead Dial simplifies your call automation with AI-driven solutions. Effortlessly engage with clients, qualify leads, and follow up—all automatically. Ready to revolutionize the way you connect and close deals?</p>
                 <button className='bg-[#EA580C] rounded-md w-[8rem] h-[2.5rem] text-[#fff] text-sm mt-4'>Signup Now</button>
             </div>
 

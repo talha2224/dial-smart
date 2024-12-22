@@ -43,14 +43,14 @@ const StepperPage = () => {
 
             <Link to={"/"} className='flex items-center gap-x-5 md:fixed top-2 left-3 w-[100%] px-3'>
                 <img src={Logo} className='' />
-                <p className='text-lg'>Dial Smart</p>
+                <p className='text-lg'>Lead Dial</p>
             </Link>
 
             <div className='flex justify-center items-center w-screen h-[95vh] md:mt-0 mt-6'>
 
                 <div className='shadow-navShadow rounded-md p-5'>
 
-                    <h1 className="text-[1.1rem] font-medium">Hi {username} 👋, Welcome to Dial Smart!</h1>
+                    <h1 className="text-[1.1rem] font-medium">Hi {username} 👋, Welcome to Lead Dial!</h1>
                     <h1 className="text-[1.1rem] font-medium">We need some basic information to get started.</h1>
                     <Stepper activeStep={activeStep} className='sm:w-[32rem]' styleConfig={{ activeBgColor: 'red', activeTextColor: '#fff', completedBgColor: '#008000', completedTextColor: '#fff', inactiveBgColor: '#E0E0E0', inactiveTextColor: '#757575', size: '2em', }} connectorStyleConfig={{ activeColor: '#008000', completedColor: '#8BC34A', disabledColor: '#E0E0E0', size: 2, }}>
                         <Step label="Business Details" />
