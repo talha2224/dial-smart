@@ -1,34 +1,37 @@
-import React from 'react'
-import Navbar from '../components/landingpage/Navbar'
-import Hero from '../components/landingpage/Hero'
-import Help from '../components/landingpage/Help'
-import Performance from '../components/landingpage/Performance'
-import UseCase from '../components/landingpage/UseCase'
-import Ideas from '../components/landingpage/Ideas'
-import Presence from '../components/landingpage/Presence'
-import Footer from '../components/landingpage/Footer'
-import Work from '../components/landingpage/Work'
-import Pricing from '../components/landingpage/Pricing'
+import React, { Suspense, lazy } from 'react';
+
+// Lazy load components
+const Navbar = lazy(() => import('../components/landingpage/Navbar'));
+const Hero = lazy(() => import('../components/landingpage/Hero'));
+const Help = lazy(() => import('../components/landingpage/Help'));
+const Performance = lazy(() => import('../components/landingpage/Performance'));
+const Work = lazy(() => import('../components/landingpage/Work'));
+const Pricing = lazy(() => import('../components/landingpage/Pricing'));
+const UseCase = lazy(() => import('../components/landingpage/UseCase'));
+const Presence = lazy(() => import('../components/landingpage/Presence'));
+const Footer = lazy(() => import('../components/landingpage/Footer'));
 
 const LandingPage = () => {
   return (
     <>
-
-      <div className='px-4 sm:px-12'>
-        <Navbar />
-        <Hero />
-        <Help />
-        <Performance />
-        <Work/>
-        <Pricing/>
-        <UseCase />
-        <Presence />
+      <div className="px-4 sm:px-12">
+        <Suspense fallback={<div>Loading...</div>}>
+          <Navbar />
+          <Hero />
+          <Help />
+          <Performance />
+          <Work />
+          <Pricing />
+          <UseCase />
+          <Presence />
+        </Suspense>
       </div>
-
-      <Footer/>
-
+      
+      <Suspense fallback={<div>Loading Footer...</div>}>
+        <Footer />
+      </Suspense>
     </>
-  )
-}
+  );
+};
 
-export default LandingPage
+export default LandingPage;
