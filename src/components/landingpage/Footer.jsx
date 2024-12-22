@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaFacebook, FaLinkedinIn, FaSkype, FaTwitter } from 'react-icons/fa'
 import Logo from '../../assets/leadbot.png'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
@@ -15,7 +16,7 @@ const Footer = () => {
                     </div>
                     <p className='mt-2 text-sm'>Let’s Drive Growth and Efficiency for Your Business</p>
                     <p className='mt-2 text-sm'>Call us: + (92) 3422793234</p>
-                    <p className='mt-2 text-sm'>Email: leadbot@gmail.com</p>
+                    <p className='mt-2 text-sm'>Email: talhahaider074@gmail.com</p>
                 </div>
 
                 <div className='mb-4'>
@@ -30,10 +31,13 @@ const Footer = () => {
 
                 <div className='mb-4'>
                     <h1 className='text-[1.3rem] font-semibold'>COMPANY</h1>
-                    <p className='mt-2 text-sm'>About</p>
-                    <p className='mt-2 text-sm'>Blog</p>
-                    <p className='mt-2 text-sm'>Login</p>
-                    <p className='mt-2 text-sm'>Sign up</p>
+                    <p className='mt-2 text-sm cursor-pointer'>About</p>
+                    <p className='mt-2 text-sm cursor-pointer'>Blog</p>
+                    <p className='mt-2 text-sm cursor-pointer'>Login</p>
+                    <p className='mt-2 text-sm cursor-pointer'>Sign up</p>
+                    <Link to={"/privacy"}><p className='mt-2 text-sm cursor-pointer'>Privacy & Policy</p></Link>
+                    <Link to={"/terms"}><p className='mt-2 text-sm cursor-pointer'>Terms & Condition</p></Link>
+
                 </div>
 
                 <div className='mb-4'>

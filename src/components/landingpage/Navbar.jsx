@@ -20,7 +20,7 @@ const Navbar = () => {
 
 
             <div className='md:flex items-center gap-x-4 hidden'>
-                <a href=""><p className='text-[#0F172A] cursor-pointer'>Product</p></a>
+                <a href="/"><p className='text-[#0F172A] cursor-pointer'>Product</p></a>
                 <a href="#solution"><p className='text-[#0F172A] cursor-pointer'>Solution</p></a>
                 <a href="#pricing"><p className='text-[#0F172A] cursor-pointer'>Pricing</p></a>
                 <a href="#solution"><p className='text-[#0F172A] cursor-pointer'>Resources</p></a>

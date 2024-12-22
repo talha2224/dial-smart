@@ -1,6 +1,8 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
+import PolicyPage from './pages/PolicyPage'
+import Terms from './pages/TermsPage'
 import RegisterPage from './pages/Auth/RegisterPage'
 import LoginPage from './pages/Auth/LoginPage'
 import StepperPage from './pages/Stepper/StepperPage'
@@ -27,6 +29,8 @@ function App() {
         <Routes>
 
           <Route path='/' element={<LandingPage />} />
+          <Route path='/privacy' element={<PolicyPage />} />
+          <Route path='/terms' element={<Terms />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
           <Route path='/user/account/inviation/:token' element={<InvitationPage />} />
