@@ -8,6 +8,7 @@ const productionConfig = {
     baseUrl:"https://sea-lion-app-54dwv.ondigitalocean.app/api/v1",
     socketUrl:"https://sea-lion-app-54dwv.ondigitalocean.app/"
 }
+// "start": "set PORT=3001 && craco start",
 
 
 export default productionConfig
