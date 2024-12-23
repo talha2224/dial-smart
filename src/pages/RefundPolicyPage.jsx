@@ -1,10 +1,17 @@
 import React from 'react';
 import Navbar from '../components/landingpage/Navbar';
 import Footer from '../components/landingpage/Footer';
+import { Helmet } from 'react-helmet';
 
 const RefundPolicyPage = () => {
     return (
         <>
+
+            <Helmet>
+                <title>Lead Dial - Refund Policy</title>
+                <meta name="description" content="Learn about Lead Dial's refund policy, including eligibility criteria, refund process, and terms for AI-based solutions and services."/>
+            </Helmet>
+
             <div className="px-4 sm:px-12">
                 <Navbar />
             </div>

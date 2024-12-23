@@ -1,10 +1,16 @@
 import React from 'react';
 import Navbar from '../components/landingpage/Navbar';
 import Footer from '../components/landingpage/Footer';
+import { Helmet } from 'react-helmet';
 
 const Policy = () => {
     return (
         <>
+
+            <Helmet>
+                <title>Lead Dial - Privacy Policy</title>
+                <meta name="description" content="Read Lead Dial's privacy policy to understand how we collect, use, and safeguard your personal and business data while providing AI-based solutions for sales and customer support."/>
+            </Helmet>
             <div className='px-4 sm:px-12'>
                 <Navbar />
             </div>
@@ -93,7 +99,7 @@ const Policy = () => {
 
             <div className='mt-[-4rem]'> <Footer /></div>
 
-           
+
         </>
     );
 };

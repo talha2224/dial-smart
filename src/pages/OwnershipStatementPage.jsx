@@ -1,10 +1,18 @@
 import React from 'react';
 import Navbar from '../components/landingpage/Navbar';
 import Footer from '../components/landingpage/Footer';
+import { Helmet } from 'react-helmet';
 
 const OwnershipStatementPage = () => {
     return (
         <>
+
+            <Helmet>
+                <title>Lead Dial - Ownership Statement</title>
+                <meta name="description" content="Understand the ownership rights of Lead Dial, including intellectual property, trademarks, and copyrights for our AI-based solutions and services."/>
+            </Helmet>
+
+
             <div className="px-4 sm:px-12">
                 <Navbar />
             </div>

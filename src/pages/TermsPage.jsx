@@ -1,10 +1,16 @@
 import React from 'react';
 import Navbar from '../components/landingpage/Navbar';
 import Footer from '../components/landingpage/Footer';
+import { Helmet } from 'react-helmet';
 
 const Terms = () => {
     return (
         <>
+
+            <Helmet>
+                <title>Lead Dial - Terms and Conditions</title>
+                <meta name="description" content="Explore Lead Dial's terms and conditions to understand the rules and guidelines for using our AI-based solutions for sales, lead generation, and customer support."/>
+            </Helmet>
             {/* Navbar Section */}
             <div className='px-4 sm:px-12'>
                 <Navbar />

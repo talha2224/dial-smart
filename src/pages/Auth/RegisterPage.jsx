@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import config from '../../config'
 import toast from 'react-hot-toast'
 import axios from 'axios'
+import { Helmet } from 'react-helmet'
 
 const RegisterPage = () => {
   let inputStyle = "px-3 min-w-[22rem] max-w-[22rem] h-[3rem] border border-[#DCDADB] bg-transparent outline-none block rounded-md text-black"
@@ -45,6 +46,11 @@ const RegisterPage = () => {
 
   return (
     <div className='w-screen h-screen flex justify-between items-center md:flex-row flex-col'>
+
+      <Helmet>
+        <title>Lead Dial - Register</title>
+        <meta name="description" content="Create your Lead Dial account to start using our AI-based solutions for sales, lead generation, and customer support. Easy registration for seamless onboarding."/>
+      </Helmet>
 
       {/* LOGO  */}
       <Link to={"/"} className='flex items-center gap-x-5 md:fixed top-2 left-3 w-[100%] px-3'>

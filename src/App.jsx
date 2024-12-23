@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { Toaster } from 'react-hot-toast';
+import LoaderGif from './assets/loader.gif'
 const LandingPage = lazy(() => import('./pages/LandingPage'));
 const PolicyPage = lazy(() => import('./pages/PolicyPage'));
 const Terms = lazy(() => import('./pages/TermsPage'));
@@ -26,7 +27,7 @@ function App() {
     <>
       <Toaster />
       <BrowserRouter>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div className='flex justify-center items-center w-screen h-screen'><img src={LoaderGif} alt="" className='h-[6rem]' /></div>}>
           <Routes>
             <Route path='/' element={<LandingPage />} />
             <Route path='/privacy' element={<PolicyPage />} />

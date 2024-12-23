@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import axios from 'axios'
 import config from '../../config'
+import { Helmet } from 'react-helmet'
 let inputStyle = "px-3 min-w-[22rem] max-w-[22rem] h-[3rem] border border-[#DCDADB] bg-transparent outline-none block rounded-md"
 
 const LoginPage = () => {
@@ -48,6 +49,11 @@ const LoginPage = () => {
   return (
 
     <div className='w-screen flex justify-between items-center md:flex-row flex-col h-[100vh]'>
+      <Helmet>
+        <title>Lead Dial - Login</title>
+        <meta name="description" content="Access your Lead Dial account to manage AI-based solutions for sales, lead generation, and customer support. Secure login for personalized experience."/>
+      </Helmet>
+
 
       {/* LOGO  */}
       <Link to={"/"} className='flex items-center gap-x-5 md:fixed top-2 left-3 w-[100%] px-3'>
@@ -58,7 +64,7 @@ const LoginPage = () => {
 
       {/* IMAGE  */}
       <div className='hidden  bg-[#F8F5FF] h-[100vh] sm:flex justify-center items-center'>
-        <img src={LoginBg} alt="" className='h-[30rem] bg-contain' />
+        <img src={LoginBg} alt="" className='h-[30rem] bg-contain' loading='lazy'/>
       </div>
 
       {/* RIGHT FORM  */}

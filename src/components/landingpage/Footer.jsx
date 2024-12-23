@@ -31,10 +31,8 @@ const Footer = () => {
 
                 <div className='mb-4'>
                     <h1 className='text-[1.3rem] font-semibold'>COMPANY</h1>
-                    <p className='mt-2 text-sm cursor-pointer'>About</p>
-                    <p className='mt-2 text-sm cursor-pointer'>Blog</p>
-                    <p className='mt-2 text-sm cursor-pointer'>Login</p>
-                    <p className='mt-2 text-sm cursor-pointer'>Sign up</p>
+                    <Link to={"/refund"}><p className='mt-2 text-sm cursor-pointer'>Refund Policy</p></Link>
+                    <Link to={"/ownership"}><p className='mt-2 text-sm cursor-pointer'>Ownership Statement</p></Link>
                     <Link to={"/privacy"}><p className='mt-2 text-sm cursor-pointer'>Privacy & Policy</p></Link>
                     <Link to={"/terms"}><p className='mt-2 text-sm cursor-pointer'>Terms & Condition</p></Link>
 
