@@ -1,12 +1,12 @@
 import toast from "react-hot-toast";
 
-export const handleLogout = () => {
+export const handleLogout = (router) => {
 
     toast.loading("Logging out...");
     localStorage.removeItem('token');
     localStorage.removeItem('accountId');
     localStorage.removeItem('roleId');
-    window.location.href = '/login';
+    router('/login');
 };
 
 

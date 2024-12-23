@@ -3,7 +3,7 @@ import Logo from '../../../assets/leadbot.png';
 import FunnelImage from '../../../assets/dashboard/funnel.svg';
 import AvatarIcon from '../../../assets/dashboard/avatar.jpg';
 import { navData } from '../../../constants/sidebarData';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { IoLogOut } from 'react-icons/io5';
 import { useSidebar } from '../../../context/SidebarContext';
 import { handleLogout } from '../../../helpers/function';
@@ -12,6 +12,7 @@ const Sidebar = () => {
   const location = useLocation().pathname.split("/")[2];
   const { isNavOpen, toggleNav } = useSidebar();
   const sidebarRef = useRef(null);
+  const nav = useNavigate()
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
@@ -60,7 +61,7 @@ const Sidebar = () => {
               <p className='text-xs text-[#a6b0cf]'>Free account</p>
             </div>
           </div>
-          <IoLogOut onClick={handleLogout} className='text-[#fff] cursor-pointer text-xl' />
+          <IoLogOut onClick={()=>handleLogout(nav)} className='text-[#fff] cursor-pointer text-xl' />
         </div>
       </div>
 
@@ -99,7 +100,7 @@ const Sidebar = () => {
                   <p className='text-xs text-[#a6b0cf]'>Free account</p>
                 </div>
               </div>
-              <IoLogOut onClick={handleLogout} className='text-[#fff] cursor-pointer text-xl' />
+              <IoLogOut onClick={()=>handleLogout(nav)}  className='text-[#fff] cursor-pointer text-xl' />
             </div>
           </div>
         )}
