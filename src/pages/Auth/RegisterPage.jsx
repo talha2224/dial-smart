@@ -49,7 +49,8 @@ const RegisterPage = () => {
 
       <Helmet>
         <title>Lead Dial - Register</title>
-        <meta name="description" content="Create your Lead Dial account to start using our AI-based solutions for sales, lead generation, and customer support. Easy registration for seamless onboarding."/>
+        <link rel="preload" href={RegisterBg} as="image" />
+        <meta name="description" content="Create your Lead Dial account to start using our AI-based solutions for sales, lead generation, and customer support. Easy registration for seamless onboarding." />
       </Helmet>
 
       {/* LOGO  */}

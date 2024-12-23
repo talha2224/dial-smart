@@ -14,8 +14,8 @@ const Footer = lazy(() => import('../components/landingpage/Footer'));
 const LandingPage = () => {
   return (
     <>
-      <div className="px-4 sm:px-12">
-        <Suspense fallback={<div></div>}>
+      <Suspense fallback={<div></div>}>
+        <div className="px-4 sm:px-12">
           <Navbar />
           <Hero />
           <Help />
@@ -24,10 +24,8 @@ const LandingPage = () => {
           <Pricing />
           <UseCase />
           <Presence />
-        </Suspense>
-      </div>
-      
-      <Suspense fallback={<div></div>}>
+        </div>
+
         <Footer />
       </Suspense>
     </>

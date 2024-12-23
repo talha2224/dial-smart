@@ -50,8 +50,9 @@ const LoginPage = () => {
 
     <div className='w-screen flex justify-between items-center md:flex-row flex-col h-[100vh]'>
       <Helmet>
+        <link rel="preload" href={LoginBg} as="image" />
         <title>Lead Dial - Login</title>
-        <meta name="description" content="Access your Lead Dial account to manage AI-based solutions for sales, lead generation, and customer support. Secure login for personalized experience."/>
+        <meta name="description" content="Access your Lead Dial account to manage AI-based solutions for sales, lead generation, and customer support. Secure login for personalized experience." />
       </Helmet>
 
 
@@ -64,7 +65,7 @@ const LoginPage = () => {
 
       {/* IMAGE  */}
       <div className='hidden  bg-[#F8F5FF] h-[100vh] sm:flex justify-center items-center'>
-        <img src={LoginBg} alt="" className='h-[30rem] bg-contain' loading='lazy'/>
+        <img src={LoginBg} alt="" className='h-[30rem] bg-contain' loading='lazy' />
       </div>
 
       {/* RIGHT FORM  */}

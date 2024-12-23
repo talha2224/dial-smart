@@ -20,7 +20,7 @@ const Navbar = () => {
 
 
             <div className='md:flex items-center gap-x-4 hidden'>
-                <a href="/"><p className='text-[#0F172A] cursor-pointer'>Product</p></a>
+                <Link to={"/"}><p className='text-[#0F172A] cursor-pointer'>Product</p></Link>
                 <a href="#solution"><p className='text-[#0F172A] cursor-pointer'>Solution</p></a>
                 <a href="#pricing"><p className='text-[#0F172A] cursor-pointer'>Pricing</p></a>
                 <a href="#solution"><p className='text-[#0F172A] cursor-pointer'>Resources</p></a>
@@ -29,9 +29,7 @@ const Navbar = () => {
 
             <div className='md:flex items-center gap-x-6 hidden'>
                 <Link to={"/login"} className='text-[#0F172A] cursor-pointer'>Login</Link>
-                <Link to={"/register"}>
-                    <button className='text-[#0F172A] border-2 border-[#0F172A] w-[8rem] h-[2.5rem] rounded-md'>Singup Now</button>
-                </Link>
+                <Link to={"/register"}><button className='text-[#0F172A] border-2 border-[#0F172A] w-[8rem] h-[2.5rem] rounded-md'>Singup Now</button></Link>
             </div>
 
             {/* RESPONSIVE  */}
